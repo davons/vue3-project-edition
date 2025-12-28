@@ -37,6 +37,13 @@ declare module 'vue-router/auto-routes' {
       { catchAll: ParamValue<false> },
       | never
     >,
+    '/IndexPage': RouteRecordInfo<
+      '/IndexPage',
+      '/IndexPage',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
     '/projects/': RouteRecordInfo<
       '/projects/',
       '/projects',
@@ -73,6 +80,12 @@ declare module 'vue-router/auto-routes' {
     'src/pages/[...catchAll].vue': {
       routes:
         | '/[...catchAll]'
+      views:
+        | never
+    }
+    'src/pages/IndexPage.vue': {
+      routes:
+        | '/IndexPage'
       views:
         | never
     }

@@ -1,4 +1,6 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+defineOptions({ name: 'ProjectsPage' })
+</script>
 
 <template>
   <div>

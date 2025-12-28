@@ -1,8 +1,10 @@
 <script lang="ts" setup>
 import { useRoute } from 'vue-router'
 
-const route = useRoute()
-const projectId = route.params.id
+defineOptions({ name: 'SingleProjectPage' })
+
+const route = useRoute('/projects/[id]')
+const projectId = route.params.id as string
 console.log('Project ID:', projectId)
 </script>
 
