@@ -23,7 +23,8 @@
     "supabase:link": "supabase link --project-ref usgkkqnafafqsmwnptlj",
     "supabase:db:migrate": "supabase migration new projects_schema",
     "supabase:db:reset": "supabase db reset --linked",
-    "supabase:db:seed": "node ./database/seed.js"
+    "supabase:db:seed": "node ./database/seed.js",
+    "supabase:db:types": "npx supabase gen types typescript --project-id usgkkqnafafqsmwnptlj --schema public > database/types.ts"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.89.0",
