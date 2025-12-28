@@ -17,11 +17,11 @@ const supabase = createClient(supabaseUrl, serviceKey)
 
 async function seedProjects(numberOfProjects = 10) {
   try {
-    const name = faker.lorem.word(3)
-    const project = []
+    const projects = []
 
     for (let i = 0; i < numberOfProjects; i++) {
-      project.push({
+      const name = faker.lorem.words(2)
+      projects.push({
         name: name,
         slug: name.toLocaleLowerCase().replace(/\s+/g, '-'),
         status: faker.helpers.arrayElement(['cancelled', 'in-progress', 'completed']),
@@ -29,12 +29,13 @@ async function seedProjects(numberOfProjects = 10) {
       })
     }
 
-    const { data, error } = await supabase.from('project').insert(project)
+    const { data, error } = await supabase.from('project').insert(projects)
     if (error) {
       throw error
     }
 
-    console.log('Database seeded successfully:', data)
+    console.log(`Successfully seeded ${projects.length} projects`)
+    console.log('Projects:', data)
   } catch (error) {
     console.error('Error seeding database:', error)
   }
