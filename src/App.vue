@@ -1,23 +1,9 @@
-<script setup lang="ts">
-import { ref } from 'vue'
-
-const counter = ref(0)
-
-const increment = () => {
-  counter.value++
-}
-const decrement = () => {
-  counter.value--
-}
-</script>
+<script setup lang="ts"></script>
 
 <template>
-  <h1>You did it!</h1>
-  <p>
-    <button @click="increment">+</button>
-    <span>{{ counter }}</span>
-    <button @click="decrement">-</button>
-  </p>
+  <main>
+    <RouterView />
+  </main>
 </template>
 
 <style scoped></style>
