@@ -4,6 +4,7 @@ import type { Tables } from '../../../database/types'
 import { supabase } from '@/lib/supabaseClient'
 import type { ColumnDef } from '@tanstack/vue-table'
 import DataTable from '@/components/ui/data-table/DataTable.vue'
+import { RouterLink } from 'vue-router'
 
 defineOptions({ name: 'TasksPage' })
 
@@ -30,8 +31,16 @@ const columns: ColumnDef<Tables<'task'>>[] = [
     accessorKey: 'name',
     header: () => h('div', { class: 'text-left' }, 'Name'),
     cell: ({ row }) => {
+      const slug = row.original.slug
       const name = row.getValue('name') as string
-      return h('div', { class: 'text-left font-medium' }, name)
+      return h(
+        RouterLink,
+        {
+          to: `/tasks/${slug}`,
+          class: 'text-left font-medium hover:underline hover:text-blue-600',
+        },
+        { default: () => name },
+      )
     },
   },
   {

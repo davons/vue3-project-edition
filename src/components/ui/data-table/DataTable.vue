@@ -62,3 +62,5 @@ const table = useVueTable({
     </Table>
   </div>
 </template>
+
+<style scoped lang="postcss"></style>
