@@ -41,4 +41,45 @@ async function seedProjects(numberOfProjects = 10) {
   }
 }
 
+async function seedTasks(numberOfTasks = 10) {
+  try {
+    const { data: projects, error: fetchError } = await supabase.from('project').select('id')
+    if (fetchError) {
+      throw fetchError
+    }
+
+    if (!projects || projects.length === 0) {
+      console.log('No projects found to associate tasks with.')
+      return
+    }
+
+    const tasks = []
+
+    for (let i = 0; i < numberOfTasks; i++) {
+      const name = faker.lorem.words(3)
+      const project = faker.helpers.arrayElement(projects)
+      tasks.push({
+        name: name,
+        slug: name.toLocaleLowerCase().replace(/\s+/g, '-'),
+        status: faker.helpers.arrayElement(['cancelled', 'in-progress', 'completed']),
+        due_date: faker.date.future(),
+        collaborators: faker.helpers.arrayElements([1, 2, 3, 4, 5]),
+        project_id: project.id,
+      })
+    }
+
+    const { data, error } = await supabase.from('task').insert(tasks)
+    if (error) {
+      throw error
+    }
+
+    console.log(`Successfully seeded ${tasks.length} tasks`)
+    console.log('Tasks:', data)
+  } catch (error) {
+    console.error('Error seeding tasks:', error)
+  }
+}
+
 seedProjects(6)
+
+seedTasks(11)

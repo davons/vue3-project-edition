@@ -41,6 +41,47 @@ export type Database = {
         }
         Relationships: []
       }
+      task: {
+        Row: {
+          collaborators: string
+          created_at: string
+          due_date: string | null
+          id: number
+          name: string
+          project_id: number
+          slug: string
+          status: string
+        }
+        Insert: {
+          collaborators?: string
+          created_at?: string
+          due_date?: string | null
+          id?: number
+          name?: string
+          project_id: number
+          slug: string
+          status?: string
+        }
+        Update: {
+          collaborators?: string
+          created_at?: string
+          due_date?: string | null
+          id?: number
+          name?: string
+          project_id?: number
+          slug?: string
+          status?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "task_project_id_fkey"
+            columns: ["project_id"]
+            isOneToOne: false
+            referencedRelation: "project"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
@@ -50,6 +91,7 @@ export type Database = {
     }
     Enums: {
       project_status: "in-progress" | "completed" | "cancelled"
+      task_status: "in-progress" | "completed" | "cancelled"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -178,6 +220,7 @@ export const Constants = {
   public: {
     Enums: {
       project_status: ["in-progress", "completed", "cancelled"],
+      task_status: ["in-progress", "completed", "cancelled"],
     },
   },
 } as const
