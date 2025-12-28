@@ -13,7 +13,13 @@ export default defineConfig({
     VueRouter({
       dts: './typed-router.d.ts',
     }),
-    vue(),
+    vue({
+      template: {
+        compilerOptions: {
+          isCustomElement: (tag) => tag.startsWith('iconify-icon'),
+        },
+      },
+    }),
     vueDevTools(),
   ],
   resolve: {
