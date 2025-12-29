@@ -1,12 +1,10 @@
 <script lang="ts" setup>
-defineOptions({ name: 'ProjectsPage' })
-
 import { supabase } from '@/lib/supabaseClient'
 import type { Tables } from '../../database/types'
-import { h, ref } from 'vue'
 import type { ColumnDef } from '@tanstack/vue-table'
-import DataTable from '@/components/ui/data-table/DataTable.vue'
 import { RouterLink } from 'vue-router'
+
+defineOptions({ name: 'ProjectsPage' })
 
 const projects = ref<Tables<'project'>[] | null>(null)
 

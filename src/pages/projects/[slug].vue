@@ -1,11 +1,8 @@
 <script lang="ts" setup>
-import { useRoute } from 'vue-router'
-
 defineOptions({ name: 'SingleProjectPage' })
 
 const route = useRoute('/projects/[slug]')
 const projectSlug = route.params.slug as string
-console.log('Project Slug:', projectSlug)
 </script>
 
 <template>

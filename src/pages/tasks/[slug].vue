@@ -1,11 +1,8 @@
 <script lang="ts" setup>
-import { useRoute } from 'vue-router'
-
 defineOptions({ name: 'SingletaskPage' })
 
 const route = useRoute('/tasks/[slug]')
 const taskSlug = route.params.slug as string
-console.log('Task Slug:', taskSlug)
 </script>
 
 <template>

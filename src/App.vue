@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import Auth from './components/layout/main/Auth.vue'
 defineOptions({ name: 'App' })
 </script>
 
