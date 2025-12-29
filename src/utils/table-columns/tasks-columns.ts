@@ -19,6 +19,14 @@ export const columns: ColumnDef<TaksWithProjects>[] = [
       )
     },
   },
+  // {
+  //   accessorKey: 'description',
+  //   header: () => h('div', { class: 'text-left' }, 'Description'),
+  //   cell: ({ row }) => {
+  //     const description = row.getValue('description') as string
+  //     return h('div', { class: 'text-left font-medium' }, description)
+  //   },
+  // },
   {
     accessorKey: 'status',
     header: () => h('div', { class: 'text-left' }, 'Status'),
