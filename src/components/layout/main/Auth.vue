@@ -1,4 +1,7 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { usePageStore } from '@/stores/page'
+const pageStore = usePageStore()
+</script>
 
 <template>
   <Sidebar />
@@ -7,7 +10,7 @@
 
     <main class="flex flex-col flex-1 gap-4 p-4 lg:gap-6 lg:p-6">
       <div class="flex items-center">
-        <h1 class="text-lg font-semibold md:text-2xl">Page Title</h1>
+        <h1 class="text-lg font-semibold md:text-2xl">{{ pageStore.pageTitle }}</h1>
       </div>
       <slot />
     </main>

@@ -4,7 +4,20 @@ defineOptions({ name: 'App' })
 
 <template>
   <Auth>
-    <RouterView />
+    <RouterView v-slot="{ Component, route }">
+      <Suspense v-if="Component">
+        <template #default>
+          <transition name="fade" mode="out-in">
+            <component :is="Component" :key="route" />
+          </transition>
+        </template>
+        <template #fallback>
+          <div class="flex items-center justify-center h-screen">
+            <Spinner size="lg" />
+          </div>
+        </template>
+      </Suspense>
+    </RouterView>
   </Auth>
 </template>
 

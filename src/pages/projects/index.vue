@@ -6,6 +6,9 @@ import { RouterLink } from 'vue-router'
 
 defineOptions({ name: 'ProjectsPage' })
 
+const pageStore = usePageStore()
+pageStore.setPageTitle('My Projects')
+
 const projects = ref<Tables<'project'>[] | null>(null)
 
 const getProjects = async () => {
@@ -19,9 +22,8 @@ const getProjects = async () => {
     console.error('Error fetching projects:', error)
   }
 }
-;(async () => {
-  await getProjects()
-})()
+
+await getProjects()
 
 const columns: ColumnDef<Tables<'project'>>[] = [
   {

@@ -6,6 +6,9 @@ import type { ColumnDef } from '@tanstack/vue-table'
 
 defineOptions({ name: 'TasksPage' })
 
+const pageStore = usePageStore()
+pageStore.setPageTitle('My Tasks')
+
 const tasks = ref<Tables<'task'>[] | null>(null)
 
 const getTasks = async () => {
@@ -20,9 +23,7 @@ const getTasks = async () => {
   }
 }
 
-;(async () => {
-  await getTasks()
-})()
+await getTasks()
 
 const columns: ColumnDef<Tables<'task'>>[] = [
   {

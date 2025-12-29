@@ -1,11 +1,13 @@
 <script lang="ts" setup>
 defineOptions({ name: 'HomePage' })
+const pageStore = usePageStore()
+pageStore.setPageTitle('My Dashboard')
 </script>
 
 <template>
-  <div>
-    <h2>Home Page</h2>
-    <RouterLink to="/projects">Go to Projects</RouterLink>
+  <div class="prose dark:prose-invert max-w-full">
+    <h2>Welcome to the Home Page</h2>
+    <p>This is the main landing page of the application.</p>
   </div>
 </template>
 

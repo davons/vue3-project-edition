@@ -15,9 +15,16 @@ export default defineConfig({
     Components({}),
     AutoImport({
       include: [/\.[tj]sx?$/, /\.vue$/, /\.vue\?vue/, /\.vue\.[tj]sx?\?vue/, /\.md$/],
-      imports: ['vue', VueRouterAutoImports],
+      imports: [
+        'vue',
+        VueRouterAutoImports,
+        {
+          pinia: ['defineStore', 'storeToRefs', 'acceptHMRUpdate'],
+        },
+      ],
       dts: 'auto-imports.d.ts',
       viteOptimizeDeps: true,
+      dirs: ['./src/composables', './src/stores'],
     }),
     tailwindcss(),
     VueRouter({

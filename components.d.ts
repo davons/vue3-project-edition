@@ -36,6 +36,7 @@ declare module 'vue' {
     RouterView: typeof import('vue-router')['RouterView']
     Sidebar: typeof import('./src/components/layout/Sidebar.vue')['default']
     SidebarLinks: typeof import('./src/components/layout/SidebarLinks.vue')['default']
+    Spinner: typeof import('./src/components/ui/spinner/Spinner.vue')['default']
     Table: typeof import('./src/components/ui/table/Table.vue')['default']
     TableBody: typeof import('./src/components/ui/table/TableBody.vue')['default']
     TableCaption: typeof import('./src/components/ui/table/TableCaption.vue')['default']
