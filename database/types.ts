@@ -18,6 +18,7 @@ export type Database = {
         Row: {
           collaborators: string
           created_at: string
+          description: string
           id: number
           name: string
           slug: string
@@ -26,6 +27,7 @@ export type Database = {
         Insert: {
           collaborators?: string
           created_at?: string
+          description?: string
           id?: number
           name?: string
           slug: string
@@ -34,6 +36,7 @@ export type Database = {
         Update: {
           collaborators?: string
           created_at?: string
+          description?: string
           id?: number
           name?: string
           slug?: string
@@ -43,8 +46,10 @@ export type Database = {
       }
       task: {
         Row: {
+          assignee: string
           collaborators: string
           created_at: string
+          description: string
           due_date: string | null
           id: number
           name: string
@@ -53,8 +58,10 @@ export type Database = {
           status: string
         }
         Insert: {
+          assignee?: string
           collaborators?: string
           created_at?: string
+          description?: string
           due_date?: string | null
           id?: number
           name?: string
@@ -63,8 +70,10 @@ export type Database = {
           status?: string
         }
         Update: {
+          assignee?: string
           collaborators?: string
           created_at?: string
+          description?: string
           due_date?: string | null
           id?: number
           name?: string

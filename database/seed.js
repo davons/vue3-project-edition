@@ -24,6 +24,7 @@ async function seedProjects(numberOfProjects = 10) {
       projects.push({
         name: name,
         slug: name.toLocaleLowerCase().replace(/\s+/g, '-'),
+        description: faker.lorem.sentence(),
         status: faker.helpers.arrayElement(['cancelled', 'in-progress', 'completed']),
         collaborators: faker.helpers.arrayElements([1, 2, 3, 4, 5]),
       })
@@ -62,6 +63,7 @@ async function seedTasks(numberOfTasks = 10) {
         name: name,
         slug: name.toLocaleLowerCase().replace(/\s+/g, '-'),
         status: faker.helpers.arrayElement(['cancelled', 'in-progress', 'completed']),
+        description: faker.lorem.paragraph(),
         due_date: faker.date.future(),
         collaborators: faker.helpers.arrayElements([1, 2, 3, 4, 5]),
         project_id: project.id,

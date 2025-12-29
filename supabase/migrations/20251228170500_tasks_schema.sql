@@ -15,6 +15,8 @@ create table task (
   status text not null default 'in-progress'::text,
   due_date date default null,
   collaborators text not null default '[]'::text,
+  assignee text not null default ''::text,
+  description text not null default ''::text,
   project_id bigint not null references project(id) on delete cascade,
   constraint task_pkey primary key (id)
 ) TABLESPACE pg_default;
