@@ -21,7 +21,7 @@ export const projectBySlugWithTasksQuery = (slug: string) =>
     .from('project')
     .select('*, task (id, name, slug, status, due_date)')
     .eq('slug', slug)
-    .single()
+    .maybeSingle()
 export type ProjectBySlugWithTasks = QueryData<ReturnType<typeof projectBySlugWithTasksQuery>>
 
 export const getProjectBySlugWithTasks = async (

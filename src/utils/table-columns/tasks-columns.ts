@@ -47,13 +47,14 @@ export const columns: ColumnDef<TaksWithProjects>[] = [
     accessorKey: 'projects',
     header: () => h('div', { class: 'text-left' }, 'Projects'),
     cell: ({ row }) => {
+      const slug = row.original?.project?.slug ?? ''
       return h(
         RouterLink,
         {
-          to: `/projects/${row.original?.slug}`,
+          to: `/projects/${slug}`,
           class: 'text-left font-medium hover:underline hover:text-blue-600',
         },
-        () => row.original?.name || '—',
+        () => row.original?.project.name || '—',
       )
     },
   },

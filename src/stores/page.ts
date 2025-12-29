@@ -2,7 +2,7 @@ export const usePageStore = defineStore('page-store', () => {
   const pageData = ref<{ title: string }>({ title: '' })
 
   const title = computed(() => pageData.value.title)
-  const pageTitle = computed(() => `My App - ${title.value}`)
+  const pageTitle = computed(() => `Vue3 - ${title.value}`)
   const setPageTitle = (newTitle: string) => {
     pageData.value.title = newTitle
   }
