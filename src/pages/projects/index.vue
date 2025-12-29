@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { columns } from './projects-columns'
+import { columns } from '../../utils/table-columns/projects-columns'
 import { getProjects, type Projects } from '@/utils/project_queries'
 
 defineOptions({ name: 'ProjectsPage' })

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { getTasks, type TaksWithProjects } from '@/utils/task_queries'
-import { columns } from './tasks-columns'
+import { columns } from '../../utils/table-columns/tasks-columns'
 
 defineOptions({ name: 'TasksPage' })
 

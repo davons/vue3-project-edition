@@ -7,9 +7,7 @@ defineOptions({ name: 'App' })
     <RouterView v-slot="{ Component, route }">
       <Suspense v-if="Component">
         <template #default>
-          <transition name="fade" mode="out-in">
-            <component :is="Component" :key="route" />
-          </transition>
+          <component :is="Component" :key="route" />
         </template>
         <template #fallback>
           <div class="flex items-center justify-center h-screen">
