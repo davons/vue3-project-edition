@@ -1,4 +1,6 @@
 <script setup lang="ts">
+  import { signup } from '@/utils/auth_queries'
+
   usePageStore().setPageTitle('Register')
 
   const formData = ref({
@@ -9,6 +11,17 @@
     password: '',
     confirmPassword: ''
   })
+
+  const singUpWithEmail = async() => {
+    try{
+       const data = await signup(formData.value.email, formData.value.password)
+      console.log(data)
+    }catch(error) {
+      console.log(error)
+    }
+
+  }
+
 </script>
 <template>
   <div
@@ -24,7 +37,7 @@
           <Button variant="outline" class="w-full"> Register with Google </Button>
           <Separator label="Or" />
         </div>
-        <form class="grid gap-4">
+        <form class="grid gap-4" @submit.prevent="singUpWithEmail">
           <div class="grid gap-2">
             <Label id="username" class="text-left">Username</Label>
             <Input id="username" type="text" placeholder="johndoe19" required v-model="formData.username"/>
