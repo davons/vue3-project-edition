@@ -1,6 +1,10 @@
 <script setup lang="ts">
 defineOptions({ name: 'App' })
 const errorStore = useErrorStore()
+
+onErrorCaptured((error) => {
+  errorStore.setError({ error })
+})
 </script>
 
 <template>
