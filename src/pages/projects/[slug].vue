@@ -47,16 +47,16 @@ project.value = await getProjectBySlugWithTasks(projectSlug)
             <Avatar
               class="-mr-4 border border-primary hover:scale-110 transition-transform"
               v-for="collaborator in project?.collaborators"
-              :key="(collaborator && collaborator.id) || collaborator"
+              :key="collaborator"
             >
               <template v-if="collaborator && typeof collaborator === 'object'">
                 <RouterLink
                   class="w-full h-full flex items-center justify-center"
-                  :to="`/users/${collaborator.id}`"
+                  :to="`/users/${collaborator}`"
                 >
-                  <AvatarImage :src="collaborator.avatarUrl || ''" alt="" />
+                  <AvatarImage :src="collaborator || ''" alt="" />
                   <AvatarFallback>{{
-                    collaborator.name ? collaborator.name.charAt(0) : '?'
+                   collaborator
                   }}</AvatarFallback>
                 </RouterLink>
               </template>

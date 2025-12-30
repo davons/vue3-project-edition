@@ -1,3 +1,6 @@
+import { defineStore, acceptHMRUpdate } from 'pinia'
+import { computed, ref } from 'vue'
+
 export const usePageStore = defineStore('page-store', () => {
   const pageData = ref<{ title: string }>({ title: '' })
 

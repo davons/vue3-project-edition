@@ -1,12 +1,13 @@
 <script lang="ts" setup>
-import { getTaskBySlugWithProject } from '@/utils/task_queries'
+import { getTaskBySlugWithProject, type TaskBySlugWithProject } from '@/utils/task_queries'
+import type { Table } from '@tanstack/vue-table'
 
 defineOptions({ name: 'SingletaskPage' })
 
 const route = useRoute('/tasks/[slug]')
 const taskSlug = route.params.slug as string
 const pageStore = usePageStore()
-const task = ref(null)
+const task = ref<TaskBySlugWithProject | null>(null)
 
 watch(
   () => task.value,

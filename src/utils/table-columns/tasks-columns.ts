@@ -1,8 +1,11 @@
-import type { TaksWithProjects } from '@/utils/task_queries'
+import { h } from 'vue'
 import type { ColumnDef } from '@tanstack/vue-table'
 import { RouterLink } from 'vue-router'
+import type { TaksWithProjects } from '@/utils/task_queries'
 
-export const columns: ColumnDef<TaksWithProjects>[] = [
+type TaskRow = TaksWithProjects extends (infer U)[] ? U : TaksWithProjects
+
+export const columns: ColumnDef<TaskRow>[] = [
   {
     accessorKey: 'name',
     header: () => h('div', { class: 'text-left' }, 'Name'),

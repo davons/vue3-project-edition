@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { onErrorCaptured } from 'vue'
+import { useErrorStore } from '@/stores/error'
+
 defineOptions({ name: 'App' })
 const errorStore = useErrorStore()
 
