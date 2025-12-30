@@ -1,9 +1,13 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+  const pageStore = usePageStore()
+
+  pageStore.setPageTitle('Not Found')
+  useErrorStore().setError({ error: 'Page not found', customCode: 404 })
+
+</script>
 
 <template>
-  <div>
-    <h2>Page Not Found</h2>
-  </div>
+  <AppError />
 </template>
 
 <style scoped></style>

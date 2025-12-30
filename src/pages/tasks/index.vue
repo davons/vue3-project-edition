@@ -8,7 +8,9 @@ const pageStore = usePageStore()
 const tasks = ref<TaksWithProjects | null>(null)
 
 pageStore.setPageTitle('My Tasks')
+
 tasks.value = await getTasks()
+
 </script>
 
 <template>

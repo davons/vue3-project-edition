@@ -1,10 +1,14 @@
 <script setup lang="ts">
 defineOptions({ name: 'App' })
+const errorStore = useErrorStore()
 </script>
 
 <template>
   <Auth>
-    <RouterView v-slot="{ Component, route }">
+
+    <AppError v-if="errorStore.activeError" />
+
+    <RouterView v-else v-slot="{ Component, route }">
       <Suspense v-if="Component">
         <template #default>
           <component :is="Component" :key="route" />

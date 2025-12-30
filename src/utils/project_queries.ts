@@ -6,11 +6,15 @@ export const projectQuery = supabase.from('project').select('*')
 export type Projects = QueryData<typeof projectQuery>
 
 export const getProjects = async (): Promise<Projects | null> => {
-  const { data, error } = await projectQuery
+  const { data, error, status } = await projectQuery
 
   if (error) {
-    console.error('Error fetching projects:', error)
-    return null
+     useErrorStore().setError({
+        error: error,
+        customCode: status
+     })
+
+     return null;
   }
 
   return data
@@ -27,11 +31,15 @@ export type ProjectBySlugWithTasks = QueryData<ReturnType<typeof projectBySlugWi
 export const getProjectBySlugWithTasks = async (
   slug: string,
 ): Promise<ProjectBySlugWithTasks | null> => {
-  const { data, error } = await projectBySlugWithTasksQuery(slug)
+  const { data, error, status } = await projectBySlugWithTasksQuery(slug)
 
   if (error) {
-    console.error('Error fetching project by slug with tasks:', error)
-    return null
+     useErrorStore().setError({
+        error: error,
+        customCode: status
+    })
+
+     return null;
   }
 
   return data

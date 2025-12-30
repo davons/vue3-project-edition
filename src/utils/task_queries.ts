@@ -4,18 +4,20 @@ import type { QueryData } from '@supabase/supabase-js'
 export const tasksWithProjectsQuery = supabase.from('task').select(
   `
   *,
-  project( id, name, slug )
+  project( id, name, slug)
   `,
 )
 export type TaksWithProjects = QueryData<typeof tasksWithProjectsQuery>
 export const getTasks = async (): Promise<TaksWithProjects | null> => {
-  const { data, error } = await tasksWithProjectsQuery
-
+  const { data, error, status } = await tasksWithProjectsQuery
   if (error) {
-    console.error('Error fetching tasks with projects:', error)
-    return null
-  }
+     useErrorStore().setError({
+        error: error,
+        customCode: status
+    })
 
+     return null;
+  }
   return data
 }
 
@@ -35,11 +37,17 @@ export type TaskBySlugWithProject = QueryData<ReturnType<typeof taskBySlugWithPr
 export const getTaskBySlugWithProject = async (
   slug: string,
 ): Promise<TaskBySlugWithProject | null> => {
-  const { data, error } = await taskBySlugWithProjectQuery(slug)
+  const { data, error, status } = await taskBySlugWithProjectQuery(slug)
+
 
   if (error) {
-    console.error('Error fetching task by slug with project:', error)
-    return null
+
+     useErrorStore().setError({
+        error: error,
+        customCode: status
+     })
+
+     return null;
   }
 
   return data
