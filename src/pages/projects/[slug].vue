@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { getProjectBySlugWithTasks, type ProjectBySlugWithTasks } from '@/utils/project_queries'
+import { getProjectBySlugWithTasks, type ProjectBySlugWithTasks } from '@/utils/supaProject'
 
 defineOptions({ name: 'SingleProjectPage' })
 

@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { login } from '@/utils/auth_queries';
+import { login } from '@/utils/supaAuth';
 import { useRouter } from 'vue-router';
 
-const router = useRouter()
+  const router = useRouter()
 
   usePageStore().setPageTitle('Login')
 
@@ -12,15 +12,9 @@ const router = useRouter()
   })
 
   const singInWith = async() => {
-    const {data, error } = await login(formData.value.email, formData.value.password)
-       if (error) {
-        console.log(error)
-        return
-    }
+    const isLoggedIn = await login(formData.value)
 
-    if (data?.user?.id) {
-       await router.push('/')
-    }
+    if (isLoggedIn) router.push('/')
   }
 
 </script>

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { getTasks, type TaksWithProjects } from '@/utils/task_queries'
+import { getTasks, type TaksWithProjects } from '@/utils/supaTask'
 import { columns } from '../../utils/table-columns/tasks-columns'
 
 defineOptions({ name: 'TasksPage' })

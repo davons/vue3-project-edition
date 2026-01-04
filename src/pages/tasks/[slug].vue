@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { getTaskBySlugWithProject, type TaskBySlugWithProject } from '@/utils/task_queries'
+import { getTaskBySlugWithProject, type TaskBySlugWithProject } from '@/utils/supaTask'
 import type { Table } from '@tanstack/vue-table'
 
 defineOptions({ name: 'SingletaskPage' })

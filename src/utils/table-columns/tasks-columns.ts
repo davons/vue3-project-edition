@@ -1,7 +1,7 @@
 import { h } from 'vue'
 import type { ColumnDef } from '@tanstack/vue-table'
 import { RouterLink } from 'vue-router'
-import type { TaksWithProjects } from '@/utils/task_queries'
+import type { TaksWithProjects } from '@/utils/supaTask'
 
 type TaskRow = TaksWithProjects extends (infer U)[] ? U : TaksWithProjects
 
