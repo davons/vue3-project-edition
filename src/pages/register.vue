@@ -1,7 +1,9 @@
 <script setup lang="ts">
-  import { signup } from '@/utils/auth_queries'
+  import { profileRegister, signup } from '@/utils/auth_queries'
+  import { useRouter } from 'vue-router'
 
   usePageStore().setPageTitle('Register')
+  const router = useRouter()
 
   const formData = ref({
     username: '',
@@ -13,13 +15,24 @@
   })
 
   const singUpWithEmail = async() => {
-    try{
-       const data = await signup(formData.value.email, formData.value.password)
-      console.log(data)
-    }catch(error) {
-      console.log(error)
-    }
+       const { data, error } = await signup(formData.value.email, formData.value.password)
 
+       if (error) {
+        console.log(error)
+        return
+       }
+
+       if (data?.user) {
+          await profileRegister(
+            data.user.id,
+            formData.value.username,
+            formData.value.firstName,
+            formData.value.lastName
+          )
+          if (data?.user?.id) {
+            await router.push('/')
+          }
+       }
   }
 
 </script>
