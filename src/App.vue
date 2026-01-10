@@ -1,22 +1,16 @@
 <script setup lang="ts">
 import { onErrorCaptured, onMounted } from 'vue'
 import { useErrorStore } from '@/stores/error'
-import { supabase } from './lib/supabaseClient'
-import { useAuthStore } from './stores/auth'
 
 defineOptions({ name: 'App' })
 
 const errorStore = useErrorStore()
-const authStore = useAuthStore()
 
 onErrorCaptured((error) => {
   errorStore.setError({ error })
 })
 
-onMounted(async () => {
-  const { data } = await supabase.auth.getSession()
-  if (data.session?.user) await authStore.setAuth(data.session)
-})
+onMounted(async () => {})
 </script>
 
 <template>

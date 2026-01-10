@@ -9,7 +9,7 @@ const links = [
 const accountLinks = [
   { to: '/profile', icon: 'lucide:user', label: 'Profile' },
   { to: '/settings', icon: 'lucide:settings', label: 'Settings' },
-  { to: '/signout', icon: 'lucide:log-out', label: 'Sign out' },
+  { icon: 'lucide:log-out', label: 'Sign out' },
 ]
 </script>
 
@@ -33,7 +33,7 @@ const accountLinks = [
       </div>
 
       <div class="border-y text-center bg-background py-3">
-        <SidebarLinks :links="accountLinks" />
+        <SidebarLinks :links="accountLinks" @action-clicked="(payload) => console.log(payload)" />
       </div>
     </nav>
   </aside>
