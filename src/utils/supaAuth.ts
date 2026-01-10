@@ -45,3 +45,14 @@ export const login = async (formData: LoginForm) => {
 export const profileQuery = (id: string) => {
   return supabase.from('profiles').select().eq('id', id).single()
 }
+
+export const logout = async () => {
+  const authStore = useAuthStore()
+  const { error } = await supabase.auth.signOut()
+
+  if (error) return console.log(error)
+
+  await authStore.setAuth()
+
+  return true
+}

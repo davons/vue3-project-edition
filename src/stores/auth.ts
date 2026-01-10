@@ -23,6 +23,7 @@ export const useAuthStore = defineStore('auth-store', () => {
   const setAuth = async (useSesion: null | Session = null) => {
     if (!useSesion) {
       user.value = null
+      profile.value = null
       return
     }
 

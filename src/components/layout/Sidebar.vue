@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { logout } from '@/utils/supaAuth'
+
 defineOptions({ name: 'SideBar' })
 
 const links = [
@@ -11,6 +13,12 @@ const accountLinks = [
   { to: '/settings', icon: 'lucide:settings', label: 'Settings' },
   { icon: 'lucide:log-out', label: 'Sign out' },
 ]
+const executeAction = async (label: string) => {
+  if (label === 'Sign out') {
+    console.log('xxxxxxxxxxxxxxx')
+    await logout()
+  }
+}
 </script>
 
 <template>
@@ -33,7 +41,7 @@ const accountLinks = [
       </div>
 
       <div class="border-y text-center bg-background py-3">
-        <SidebarLinks :links="accountLinks" @action-clicked="(payload) => console.log(payload)" />
+        <SidebarLinks :links="accountLinks" @action-clicked="executeAction" />
       </div>
     </nav>
   </aside>
