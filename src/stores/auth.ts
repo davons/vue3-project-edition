@@ -1,6 +1,7 @@
 import { profileQuery } from '@/utils/supaAuth'
 import type { Session, User } from '@supabase/supabase-js'
 import type { Tables } from 'database/types'
+import { defineStore, acceptHMRUpdate } from 'pinia'
 
 export const useAuthStore = defineStore('auth-store', () => {
   const user = ref<null | User>(null)
@@ -34,3 +35,7 @@ export const useAuthStore = defineStore('auth-store', () => {
     setAuth,
   }
 })
+
+if (import.meta.hot) {
+  import.meta.hot.accept(acceptHMRUpdate(useAuthStore, import.meta.hot))
+}
