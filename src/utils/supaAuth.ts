@@ -4,38 +4,42 @@ import { useAuthStore } from '@/stores/auth'
 
 const authStore = useAuthStore()
 
-export const register  = async(formData: RegisterForm) => {
-   const { data, error } = await supabase.auth.signUp({
+export const register = async (formData: RegisterForm) => {
+  const { data, error } = await supabase.auth.signUp({
     email: formData.email,
-    password: formData.password
+    password: formData.password,
   })
 
-   if (error) return console.log(error)
+  if (error) return console.log(error)
 
-     if (data.user) {
-      const { error } = await supabase.from('profiles').insert({
-         id: data.user.id,
-         username: formData.username,
-         full_name: `${formData.firstName} ${formData.lastName}`,
-      })
+  if (data.user) {
+    const { error } = await supabase.from('profiles').insert({
+      id: data.user.id,
+      username: formData.username,
+      full_name: `${formData.firstName} ${formData.lastName}`,
+    })
 
     if (error) return console.log('Profiles err: ', error)
 
-    authStore.setAuth(data.session)
+    await authStore.setAuth(data.session)
 
     return true
   }
 }
 
-export const login = async(formData: LoginForm) => {
-    const {data, error } = await supabase.auth.signInWithPassword({
-      email: formData.email,
-      password: formData.password
-    })
+export const login = async (formData: LoginForm) => {
+  const { data, error } = await supabase.auth.signInWithPassword({
+    email: formData.email,
+    password: formData.password,
+  })
 
-    if (error) return console.log(error)
+  if (error) return console.log(error)
 
-    authStore.setAuth(data.session)
+  await authStore.setAuth(data.session)
 
-    return true
+  return true
+}
+
+export const profileQuery = (id: string) => {
+  return supabase.from('profiles').select().eq('id', id).single()
 }
